@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MostArk</title>
 </head>
 <body>
 	<h1>this is index</h1>
