@@ -7,6 +7,8 @@
 <title>MostArk</title>
 </head>
 <body>
-	<h1>this is index</h1>
+	<%
+	response.sendRedirect("main.do");
+	%>
 </body>
 </html>
