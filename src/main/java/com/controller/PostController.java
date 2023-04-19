@@ -20,4 +20,11 @@ public class PostController {
 		return "main";
 	}
 	
+	// 자유 게시판 목록
+	@AopSkip
+	@GetMapping("freePostList.do")
+	public String freePostList() {
+		return "freePostList";
+	}
+	
 }
