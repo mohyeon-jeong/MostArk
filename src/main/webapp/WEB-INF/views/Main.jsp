@@ -1,6 +1,10 @@
+<%@page import="com.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	MemberDto login = (MemberDto) session.getAttribute("login");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -16,13 +20,13 @@
 		<a href="freePostList.do">자유 게시판</a>
 	</div>
 	<br>
-	<div>
-		<button id="loginBtn">로그인</button>
+	<div id="loginDiv">
+		<button type="button" id="loginBtn">로그인</button>
 	</div>
 	<br>
-	<div>
-		<button id="memberUpdate">마이페이지</button>
-		<button id="logOut">로그아웃</button>
+	<div id="myPageAndLogoutDiv" style="display: none;">
+		<button type="button" id="memberUpdate">마이페이지</button>
+		<button type="button" id="logOut">로그아웃</button>
 	</div>
 	<script type="text/javascript">
 		$("#loginBtn").click(function() {
@@ -36,6 +40,17 @@
 		$("#logOut").click(function() {
 			location.href = "logout.do";
 		})
+		
+		// 로그인 한 상태일 시 로그인 버튼 hide 및 마이페이지, 로그아웃 버튼 show
+		// 로그인 기능 추가하고 테스트 해봐야 함
+		<%
+		if (login != null) {
+			%>
+			$("loginDiv").hide();
+			$("myPageAndLogoutDiv").show();
+			<%
+		}
+		%>
 	</script>
 </body>
 </html>
