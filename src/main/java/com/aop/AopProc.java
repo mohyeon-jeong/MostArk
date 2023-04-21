@@ -13,7 +13,7 @@ import com.dto.MemberDto;
 @Aspect
 public class AopProc {
 	
-	@Around("within(com.*)")
+	@Around("within(com.controller.*) && !@annotation(com.aop.AopSkip)")
 	public Object loggerAop(ProceedingJoinPoint joinpoint) throws Throwable {
 		
 		// session check

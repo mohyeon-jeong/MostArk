@@ -25,23 +25,30 @@ public class MemberController {
 		return "message";
 	}
 	
-	// 로그인
+	// 로그인 페이지로 이동
 	@AopSkip
 	@GetMapping("login.do")
 	public String login() {
 		return "login";
 	}
 	
-	// 로그아웃
+	// TODO 로그아웃
 	@GetMapping("logout.do")
 	public String logout() {
 		return "main";
 	}
 	
-	// 마이 페이지 - 내 정보 수정
+	// 마이 페이지 - 내 정보 수정으로 이동
 	@GetMapping("memberUpdate.do")
 	public String memberUpdate() {
 		return "memberUpdate";
+	}
+	
+	// 회원가입 페이지로 이동
+	@AopSkip
+	@GetMapping("register.do")
+	public String register() {
+		return "register";
 	}
 	
 }
