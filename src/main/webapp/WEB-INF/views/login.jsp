@@ -20,26 +20,41 @@
 </style>
 </head>
 <body>
-	<form id="frm" action="loginAf.do" method="post">
-		<div class="loginDiv">
+	<div class="loginDiv">	
+		<form id="frm" action="loginAf.do" method="post">
 			<h2>Login</h2>
-			<input type="text" placeholder="ID" name="ID">
+			<input type="text" placeholder="ID" name="ID" id="ID">
 			<br>
-			<input type="password" placeholder="password" name="password">
+			<input type="password" placeholder="password" name="password" id="password">
 			<br>
 			<input type="checkbox" id="saveIdChkbx">아이디 저장
 			<br>
 			<br>
-			<button id="loginBtn">로그인</button>
-			<br>
-			<button type="button" id="registerBtn">회원가입</button>
-		</div>
-	</form>
+			<button type="button" id="loginBtn">로그인</button>
+		</form>
+		<br>
+		<button type="button" id="registerBtn">회원가입</button>
+	</div>
 	<script type="text/javascript">
 		// 회원가입 버튼 클릭
 		$("#registerBtn").click(function() {
 			location.href = "register.do";
 		})
+		
+		// 빈칸 조사
+		$("#loginBtn").click(function() {
+			if(!$("#ID").val() || !$("#password").val()) {
+				alert("there is null");
+				return;
+			} else {
+				$("#frm").submit();
+			}
+		})
+		
+		// 아이디 저장
+		if($("#saveIdChkbx").is(":checked")) {
+			
+		}
 	</script>
 </body>
 </html>
