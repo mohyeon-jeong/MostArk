@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
+	<!-- 로그인 -->
 	<select id="login" parameterType="com.dto.MemberDto" resultType="com.dto.MemberDto">
-		
+		select *
+		from members
+		where ID=#{ID} and password=#{password}
+	</select>
+	
+	<!-- 내 글 정보 가져오기 -->
+	<select id="getMyPost" parameterType="com.dto.MemberDto" resultType="com.dto.PostDto">
+		select *
+		from post
+		where nickname=#{nickname}
+	</select>
+	
+	<!-- 내 댓글 정보 가져오기 -->
+	<select id="getMyComment" parameterType="com.dto.MemberDto" resultType="com.dto.CommentDto">
+		select *
+		from comments
+		where nickname=#{nickname}
 	</select>
 </mapper>
