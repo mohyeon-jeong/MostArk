@@ -64,20 +64,22 @@ public class MemberController {
 	public String loginAf(MemberDto beforeLoginDto, HttpServletRequest req, Model model) {
 		MemberDto afterLoginDto = service.login(beforeLoginDto);
 		
-		List<PostDto> myPost = new ArrayList<>();
-		myPost = service.getMyPost(afterLoginDto);
-		
-		List<CommentDto> myComment = new ArrayList<>();
-		myComment = service.getMyComment(afterLoginDto);
-		
-		if (afterLoginDto != null) {
+		if (afterLoginDto != null) { // 로그인 성공
+			// 내 글, 댓글 정보 가져오기
+			List<PostDto> myPost = new ArrayList<>();
+			myPost = service.getMyPost(afterLoginDto);
+			
+			List<CommentDto> myComment = new ArrayList<>();
+			myComment = service.getMyComment(afterLoginDto);
+			
+			// 세션에 로그인 정보 저장
 			req.getSession().setAttribute("login", afterLoginDto);
 			req.getSession().setAttribute("myPost", myPost);
 			req.getSession().setAttribute("myComment", myComment);
 			req.getSession().setMaxInactiveInterval(60 * 60 * 2); // 세션 만료 기한 설정 (2시간)
 			
 			return "main";
-		} else {
+		} else { // 로그인 실패
 			String msgParam = "LOGIN_FAILED";
 			model.addAttribute("login", msgParam);
 			
