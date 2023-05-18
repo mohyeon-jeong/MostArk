@@ -13,5 +13,7 @@ public interface MemberService {
 	List<PostDto> getMyPost(MemberDto dto);
 	
 	List<CommentDto> getMyComment(MemberDto dto);
+	
+	int idCheck(String id);
 
 }

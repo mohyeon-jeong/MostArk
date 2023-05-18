@@ -34,4 +34,9 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectList(map + "getMyComment", dto);
 	}
 	
+	@Override
+	public int idCheck(String id) {
+		return session.selectOne(map + "idCheck", id);
+	}
+	
 }

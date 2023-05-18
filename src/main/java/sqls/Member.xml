@@ -21,4 +21,11 @@
 		from comments
 		where nickname=#{nickname}
 	</select>
+	
+	<!-- ID 중복확인 -->
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		select count(*)
+		from members
+		where ID=#{ID}
+	</select>
 </mapper>

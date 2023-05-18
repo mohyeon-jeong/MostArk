@@ -13,9 +13,10 @@
 		<form id="frm" action="registerAf.do" method="post">
 			아이디
 			<br>
-			<input type="text" placeholder="ID" name="ID">&nbsp;
+			<input type="text" placeholder="ID" name="ID" id="ID">&nbsp;
 			<button type="button" id="idCheckBtn">중복확인</button>
 			<br>
+			<p id="idCheckStat" />
 			<br>
 			비밀번호
 			<br>
@@ -29,8 +30,10 @@
 			<br>
 			닉네임
 			<br>
-			<input type="text" placeholder="nickname" name="nickname">
+			<input type="text" placeholder="nickname" name="nickname" id="nickname">&nbsp;
+			<button type="button" id="nickCheckBtn">중복확인</button>
 			<br>
+			<p id="nickCheckStat" />
 			<br>
 			이메일
 			<br>
@@ -41,8 +44,41 @@
 		</form>
 	</div>
 	<script type="text/javascript">
-		$("registerBtn").click(function() {
-				
+		// 아이디 중복확인
+		$("#idCheckBtn").click(function() {
+			// 빈칸 조사
+			if ($("#ID").val() == "" || $("#ID").val() == null) {
+				alert("ID를 입력하세요")
+				return;
+			}
+			
+			// 중복 확인
+			$.ajax({
+				type: "post",
+				url: "idCheck.do",
+				data: { "ID":$("#ID").val() },
+				success: function(msg) {
+					if (msg == "YES") {
+						alert("사용할 수 있는 ID입니다.")
+					} else {
+						alert("이미 사용중인 ID입니다.")
+						$("#ID").val() = ""
+					}
+				},
+				error: function() {
+					alert("register.jsp idCheck ajax error")
+				}
+			})
+		})
+		
+		// 닉네임 중복확인
+		$("#nickCheckBtn").click(function() {
+			
+		})
+	
+		// 회원가입 버튼 클릭 - 회원 가입 처리 로직
+		$("#registerBtn").click(function() {
+			
 		})
 	</script>
 </body>
