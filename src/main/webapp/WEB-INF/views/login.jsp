@@ -36,7 +36,7 @@
 		<button type="button" id="registerBtn">회원가입</button>
 	</div>
 	<script type="text/javascript">
-		// 회원가입 버튼 클릭
+		// 회원가입 버튼 클릭 - 회원가입 페이지로 이동
 		$("#registerBtn").click(function() {
 			location.href = "register.do";
 		})

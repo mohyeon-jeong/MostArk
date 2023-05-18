@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aop.AopSkip;
 import com.dto.CommentDto;
@@ -59,7 +60,21 @@ public class MemberController {
 		return "register";
 	}
 	
+	// 회원 가입 - 아이디 중복 확인
+	@AopSkip
+	@ResponseBody
+	@PostMapping("idCheck.do")
+	public String idCheck(String id) {
+		int n = service.idCheck(id);
+		if (n > 0) {
+			return "NO";
+		} else {
+			return "YES";
+		}
+	}
+	
 	// 로그인
+	@AopSkip
 	@PostMapping("loginAf.do")
 	public String loginAf(MemberDto beforeLoginDto, HttpServletRequest req, Model model) {
 		MemberDto afterLoginDto = service.login(beforeLoginDto);
@@ -80,8 +95,7 @@ public class MemberController {
 			
 			return "main";
 		} else { // 로그인 실패
-			String msgParam = "LOGIN_FAILED";
-			model.addAttribute("login", msgParam);
+			model.addAttribute("login", "LOGIN_FAILED");
 			
 			return "message";
 		}

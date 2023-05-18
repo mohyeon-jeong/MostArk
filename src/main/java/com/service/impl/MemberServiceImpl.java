@@ -31,5 +31,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<CommentDto> getMyComment(MemberDto dto) {
 		return dao.getMyComment(dto);
 	}
+	
+	@Override
+	public int idCheck(String id) {
+		return dao.idCheck(id);
+	}
 
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class MemberDto implements Serializable {
 
 	private int memberSeq;
-	private String Id;
+	private String ID;
 	private String password;
 	private String nickname;
 	private String email;
@@ -17,7 +17,7 @@ public class MemberDto implements Serializable {
 	public MemberDto(int memberSeq, String id, String password, String nickname, String email) {
 		super();
 		this.memberSeq = memberSeq;
-		Id = id;
+		this.ID = id;
 		this.password = password;
 		this.nickname = nickname;
 		this.email = email;
@@ -31,12 +31,12 @@ public class MemberDto implements Serializable {
 		this.memberSeq = memberSeq;
 	}
 
-	public String getId() {
-		return Id;
+	public String getID() {
+		return ID;
 	}
 
-	public void setId(String id) {
-		Id = id;
+	public void setID(String id) {
+		ID = id;
 	}
 
 	public String getPassword() {
@@ -65,7 +65,7 @@ public class MemberDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MemberDto [memberSeq=" + memberSeq + ", Id=" + Id + ", password=" + password + ", nickname=" + nickname
+		return "MemberDto [memberSeq=" + memberSeq + ", ID=" + ID + ", password=" + password + ", nickname=" + nickname
 				+ ", email=" + email + "]";
 	}
 	
